@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import { Container } from './style';
 import Card from './Card'
-import { data } from '../../mock';
 
 class YouTube extends Component {
     render() {
+        console.log(this.props.data);
+        const { data } = this.props
         return (
             <Container>
-                {data.map((value) => (
-                    <Card
-                        view='1M'
-                        time='10 minutes before'
-                        name={'User'}
-                        user={'https://yt3.ggpht.com/ytc/AKedOLRMsjJQ7wRCoQqylzci_XTzHNuorRV7M3cMOW9RQA=s900-c-k-c0x00ffffff-no-rj'}
-                        video={'https://i.ytimg.com/vi/hcXXZq25FX0/maxresdefault.jpg'}
-                    />
-                ))}
+                {
+                    data.length ?
+                        data.map((value) => (
+                            <Card key={value.id} value={value} />
+                        )) : <h1 style={{ textAlign: 'center', width: '100%'}}>Not Found  </h1>
+                }
             </Container>
         );
     }
